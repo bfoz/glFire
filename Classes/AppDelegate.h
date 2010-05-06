@@ -1,10 +1,10 @@
 /*
  
- File: GLGravityAppDelegate.h
+ File: AppDelegate.h
  
- Abstract: The GLGravityAppDelegate class is the app delegate that ties 
+ Abstract: The AppDelegate class is the app delegate that ties 
  everything together. It updates the acceletometer values used to draw 
- OpenGL content in the GLGravityView class.
+ OpenGL content in the GLFireView class.
  
  Version: 2.1
  
@@ -50,16 +50,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class GLGravityView;
+@class GLFireView;
 
-@interface GLGravityAppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate> {
     UIWindow *window;
-    GLGravityView *glView;
+    GLFireView *glView;
 	UIAccelerationValue accel[3];
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet GLGravityView *glView;
+@property (nonatomic, retain) IBOutlet GLFireView *glView;
 
 @end
 

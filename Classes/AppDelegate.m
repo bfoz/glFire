@@ -1,10 +1,10 @@
 /*
  
- File: GLGravityAppDelegate.m
+ File: AppDelegate.m
  
- Abstract: The GLGravityAppDelegate class is the app delegate that ties 
+ Abstract: The AppDelegate class is the app delegate that ties 
  everything together. It updates the acceletometer values used to draw 
- OpenGL content in the GLGravityView class.
+ OpenGL content in the GLFireView class.
  
  Version: 2.1
  
@@ -48,14 +48,14 @@
  
 */
 
-#import "GLGravityAppDelegate.h"
-#import "GLGravityView.h"
+#import "AppDelegate.h"
+#import "GLFireView.h"
 
 // CONSTANTS
 #define kAccelerometerFrequency		100.0 // Hz
 #define kFilteringFactor			0.1
 
-@implementation GLGravityAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize glView;

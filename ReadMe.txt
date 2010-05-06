@@ -1,9 +1,9 @@
-### GLGravity ###
+### GLFire ###
 
 ===========================================================================
 DESCRIPTION:
 
-The GLGravity sample application demonstrates how to use the UIAccelerometer class in combination with OpenGL rendering. It shows how to extract the gravity vector from the accelerometer values using a basic low-pass filter, and how to build an OpenGL transformation matrix from it. Note that the result is not fully defined, as rotation of the device around the gravity vector cannot be detected by the accelerometer.
+The GLFire sample application demonstrates how to use the UIAccelerometer class in combination with OpenGL rendering. It shows how to extract the gravity vector from the accelerometer values using a basic low-pass filter, and how to build an OpenGL transformation matrix from it. Note that the result is not fully defined, as rotation of the device around the gravity vector cannot be detected by the accelerometer.
 
 This application is designed to run on a device, not in the iPhone Simulator. Rotate the device and observe how the teapot always stays upright, independent of the device orientation.
 
@@ -20,13 +20,13 @@ iPhone OS 3.1 and later
 ===========================================================================
 PACKAGING LIST:
 
-Classes/GLGravityAppDelegate.h
-Classes/GLGravityAppDelegate.m
-The GLGravityAppDelegate class is the app delegate that ties everything together. It updates the acceletometer values used to draw OpenGL content in the GLGravityView class.
+Classes/AppDelegate.h
+Classes/AppDelegate.m
+The AppDelegate class is the app delegate that ties everything together. It updates the acceletometer values used to draw OpenGL content in the GLFireView class.
 
-Classes/GLGravityView.h
-Classes/GLGravityView.m
-The GLGravityView wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass. The view content is basically an EAGL surface you render your OpenGL scene into. 
+Classes/GLFireView.h
+Classes/GLFireView.m
+The GLFireView wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass. The view content is basically an EAGL surface you render your OpenGL scene into. 
 
 Models/teapot.h
 Contains data necessary for rendering the teapot model.
