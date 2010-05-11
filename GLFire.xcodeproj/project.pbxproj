@@ -15,8 +15,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2D500B940D5A79C200DBA0E3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */; };
 		2D500B9A0D5A79CF00DBA0E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */; };
-		63E8ED9F0E1ACA88004D3662 /* GLFireView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E8ED9D0E1ACA88004D3662 /* GLFireView.m */; };
-		AF85818310643D940004D36B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF85818210643D940004D36B /* AppDelegate.m */; };
+		63E8ED9F0E1ACA88004D3662 /* GLFireView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63E8ED9D0E1ACA88004D3662 /* GLFireView.mm */; };
+		AF85818310643D940004D36B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF85818210643D940004D36B /* AppDelegate.mm */; };
 		AF85846C10646AA20004D36B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF85846B10646AA20004D36B /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
@@ -33,11 +33,11 @@
 		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		63A452D60E0877A900AA59DC /* teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = teapot.h; path = Models/teapot.h; sourceTree = "<group>"; };
-		63E8ED9D0E1ACA88004D3662 /* GLFireView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFireView.m; path = Classes/GLFireView.m; sourceTree = "<group>"; };
+		63E8ED9D0E1ACA88004D3662 /* GLFireView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GLFireView.mm; path = Classes/GLFireView.mm; sourceTree = "<group>"; };
 		63E8ED9E0E1ACA88004D3662 /* GLFireView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFireView.h; path = Classes/GLFireView.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF85818110643D940004D36B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
-		AF85818210643D940004D36B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		AF85818210643D940004D36B /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Classes/AppDelegate.mm; sourceTree = "<group>"; };
 		AF85846B10646AA20004D36B /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				AF85818110643D940004D36B /* AppDelegate.h */,
-				AF85818210643D940004D36B /* AppDelegate.m */,
+				AF85818210643D940004D36B /* AppDelegate.mm */,
 				63E8ED9E0E1ACA88004D3662 /* GLFireView.h */,
-				63E8ED9D0E1ACA88004D3662 /* GLFireView.m */,
+				63E8ED9D0E1ACA88004D3662 /* GLFireView.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -186,8 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				63E8ED9F0E1ACA88004D3662 /* GLFireView.m in Sources */,
-				AF85818310643D940004D36B /* AppDelegate.m in Sources */,
+				63E8ED9F0E1ACA88004D3662 /* GLFireView.mm in Sources */,
+				AF85818310643D940004D36B /* AppDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

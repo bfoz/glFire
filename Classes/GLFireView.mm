@@ -61,7 +61,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
 // A class extension to declare private methods
-@interface GLFireView (private)
+@interface GLFireView (_private)
 
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
@@ -112,7 +112,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 		if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
 			displayLinkSupported = TRUE;
 		
-		accel = calloc(3, sizeof(UIAccelerationValue));
+		accel = (UIAccelerationValue*)calloc(3, sizeof(UIAccelerationValue));
 		
 		[self setupView];
 	}
