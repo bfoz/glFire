@@ -53,6 +53,8 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+#include "ParticleFountain.h"
+
 @interface GLFireView : UIView
 {
 @private
@@ -79,6 +81,8 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
     NSTimer *animationTimer;
 	
 	UIAccelerationValue	*accel;
+
+    ParticleFountain	fountain;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;

@@ -52,10 +52,26 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #import <OpenGLES/EAGLDrawable.h>
 
 #import "GLFireView.h"
-#import "teapot.h"
+
+#include "ParticleFountain.h"
 
 // CONSTANTS
 #define kTeapotScale				3.0
+#define	kAccelerationMagnitude			-0.15
+#define	kFountainDiameter			0.01
+#define	kFountainDirectionVariance		0.2
+#define	kFountainRate				100
+#define	kParticleLifespan			2
+#define	kParticleLifespanVariance		0.1
+#define	kParticleSpeed				0.15
+#define	kParticleSpeedVariance			0.1
+#if TARGET_IPHONE_SIMULATOR
+#define	kAccelerationDirection			Vector3f(0,0,kAccelerationMagnitude)
+#define	kFountainDirection			Vector3f(0,0,1)
+#else
+#define	kAccelerationDirection			Vector3f(0,kAccelerationMagnitude,0)
+#define	kFountainDirection			Vector3f(0,1,0)
+#endif
 
 // MACROS
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
@@ -113,7 +129,17 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 			displayLinkSupported = TRUE;
 		
 		accel = (UIAccelerationValue*)calloc(3, sizeof(UIAccelerationValue));
-		
+
+	fountain.position(Vector3f(0,0,0));
+	fountain.acceleration(kAccelerationDirection);
+	fountain.diameter(kFountainDiameter);
+	fountain.direction(kFountainDirection);
+	fountain.lifespan(kParticleLifespan);
+	fountain.rate(kFountainRate);
+	fountain.speed(kParticleSpeed);
+	fountain.variance(kFountainDirectionVariance, kParticleLifespanVariance, kParticleSpeedVariance);
+	fountain.start();
+
 		[self setupView];
 	}
 	
@@ -149,10 +175,6 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 		
 	//Configure OpenGL arrays
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-	glVertexPointer(3 ,GL_FLOAT, 0, teapot_vertices);
-	glNormalPointer(GL_FLOAT, 0, teapot_normals);
-	glEnable(GL_NORMALIZE);
 
 	//Set the OpenGL projection matrix
 	glMatrixMode(GL_PROJECTION);
@@ -163,6 +185,8 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	
 	//Make the OpenGL modelview matrix the default
 	glMatrixMode(GL_MODELVIEW);
+
+    fountain.setupView();
 }
 
 // Updates the OpenGL view
@@ -216,26 +240,16 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 		// Rotate a bit more so that its where we want it.
 		glRotatef(90.0, 0.0, 0.0, 1.0);
 	}
-	// If we're in the simulator we'd like to do something more interesting than just sit there
-	// But if we're on a device, we want to just let the accelerometer do the work for us without a fallback.
 #if TARGET_IPHONE_SIMULATOR
+    // The simulator doesn't emulate the accelerometers, so align the fountain
+    //	vertically on the screen
 	else
-	{
-		static GLfloat spinX = 0.0, spinY = 0.0;
-		glRotatef(spinX, 0.0, 0.0, 1.0);
-		glRotatef(spinY, 0.0, 1.0, 0.0);
-		glRotatef(90.0, 1.0, 0.0, 0.0);
-		spinX += 1.0;
-		spinY += 0.25;
-	}
+	    glRotatef(-90.0, 1.0, 0.0, 0.0);
 #endif
-		
-	// Draw teapot. The new_teapot_indicies array is an RLE (run-length encoded) version of the teapot_indices array in teapot.h
-	for(int i = 0; i < num_teapot_indices; i += new_teapot_indicies[i] + 1)
-	{
-		glDrawElements(GL_TRIANGLE_STRIP, new_teapot_indicies[i], GL_UNSIGNED_SHORT, &new_teapot_indicies[i+1]);
-	}
- 
+
+    fountain.update([displayLink duration]);
+    fountain.draw();
+
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
