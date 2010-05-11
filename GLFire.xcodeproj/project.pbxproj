@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14078D160DD3BF69003D766A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14078D150DD3BF69003D766A /* Icon.png */; };
+		156516BA119467000011F8A6 /* ParticleFountain.cc in Sources */ = {isa = PBXBuildFile; fileRef = 156516B9119467000011F8A6 /* ParticleFountain.cc */; };
 		1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */; };
 		1D4F2F9A0D10AC310045FB13 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D4F2F990D10AC310045FB13 /* Default.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -22,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		14078D150DD3BF69003D766A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		156516B9119467000011F8A6 /* ParticleFountain.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticleFountain.cc; path = Classes/ParticleFountain.cc; sourceTree = "<group>"; };
+		15BB13701198480B00755BBB /* ParticleFountain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleFountain.h; path = Classes/ParticleFountain.h; sourceTree = "<group>"; };
+		15BB141211994EF200755BBB /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector.h; path = Classes/Vector.h; sourceTree = "<group>"; };
 		1B57FB700DA56F450091B3B1 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,10 +118,13 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				15BB13701198480B00755BBB /* ParticleFountain.h */,
+				156516B9119467000011F8A6 /* ParticleFountain.cc */,
 				AF85818110643D940004D36B /* AppDelegate.h */,
 				AF85818210643D940004D36B /* AppDelegate.mm */,
 				63E8ED9E0E1ACA88004D3662 /* GLFireView.h */,
 				63E8ED9D0E1ACA88004D3662 /* GLFireView.mm */,
+				15BB141211994EF200755BBB /* Vector.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				63E8ED9F0E1ACA88004D3662 /* GLFireView.mm in Sources */,
 				AF85818310643D940004D36B /* AppDelegate.mm in Sources */,
+				156516BA119467000011F8A6 /* ParticleFountain.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
