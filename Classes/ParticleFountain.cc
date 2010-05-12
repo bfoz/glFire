@@ -78,7 +78,7 @@ void ParticleFountain::update(float interval)
 	    // Initialize the new particle
 	    p->_color = _color + (c * _colorVariance);
 	    p->_colorRate = _colorRate + (c * _colorRateVariance);
-	    p->_position = _position + (r * _diameter);
+	    p->_position = _position + (r.unit() * _diameter);
 	    p->_velocity = (_direction + (r * _directionVariance)).unit() * (_speed + _speedVariance);
 	    p->_timeToLive = _lifespan + (RANDOM_0_TO_1() * _lifespanVariance);
 	}
