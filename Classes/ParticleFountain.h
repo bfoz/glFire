@@ -48,6 +48,7 @@ class ParticleFountain
     RGBAf	_colorRateVariance;
     float	_directionVariance;
     float	_lifespanVariance;
+    float	_rateVariance;
     float	_speedVariance;
 
     typedef	std::list<Particle*>	particles_type;
@@ -90,12 +91,13 @@ public:
     void rate(unsigned r)	{ _rate = r;	}
     void speed(float s)		{ _speed = s;	}
 
-    void variance(RGBAf c, RGBAf cRV, float dir, float life=0, float _speed=0)
+    void variance(RGBAf c, RGBAf cRV, float dir, float life, float r, float _speed=0)
     {
 	_colorVariance = c;
 	_colorRateVariance = cRV;
 	_directionVariance = dir;
 	_lifespanVariance = life;
+	_rateVariance = r;
 	_speedVariance = _speed;
     }
 };

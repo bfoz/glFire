@@ -66,6 +66,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #define	kFountainDiameter			0.01
 #define	kFountainDirectionVariance		0.2
 #define	kFountainRate				100
+#define	kFountainRateVariance			50
 #define	kParticleLifespan			2
 #define	kParticleLifespanVariance		0.1
 #define	kParticleSpeed				0.15
@@ -149,7 +150,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	fountain.speed(kParticleSpeed);
 	fountain.variance(kFountainColorVariance, kFountainColorRateVariance,
 			  kFountainDirectionVariance, kParticleLifespanVariance,
-			  kParticleSpeedVariance);
+			  kFountainRateVariance, kParticleSpeedVariance);
 	fountain.start();
 
 		[self setupView];

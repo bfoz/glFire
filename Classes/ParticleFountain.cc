@@ -54,7 +54,7 @@ void ParticleFountain::update(float interval)
     //  the new ones from being double-updated upon creation
     if( _active && _rate )
     {
-	float numNewParticles = interval * _rate + _remainder;
+	float numNewParticles = interval * _rate + (_rateVariance * RANDOM_0_TO_1()) + _remainder;
 	unsigned num = floor(numNewParticles);
 	_remainder = numNewParticles - num; // Save fractional particles for next time
 	
