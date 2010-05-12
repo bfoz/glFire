@@ -161,28 +161,10 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	
 -(void)setupView
 {
-	const GLfloat			lightAmbient[] = {0.2, 0.2, 0.2, 1.0};
-	const GLfloat			lightDiffuse[] = {1.0, 0.6, 0.0, 1.0};
-	const GLfloat			matAmbient[] = {0.6, 0.6, 0.6, 1.0};
-	const GLfloat			matDiffuse[] = {1.0, 1.0, 1.0, 1.0};	
-	const GLfloat			matSpecular[] = {1.0, 1.0, 1.0, 1.0};
-	const GLfloat			lightPosition[] = {0.0, 0.0, 1.0, 0.0}; 
-	const GLfloat			lightShininess = 100.0,
-							zNear = 0.1,
+	const GLfloat	zNear = 0.1,
 							zFar = 1000.0,
 							fieldOfView = 60.0;
 	GLfloat					size;
-	
-	//Configure OpenGL lighting
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, matAmbient);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, matDiffuse);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpecular);
-	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, lightShininess);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition); 			
 
     glShadeModel(GL_FLAT);
     glDisable(GL_DEPTH_TEST);
