@@ -73,6 +73,9 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #define	kFountainDirection			Vector3f(0,1,0)
 #endif
 
+#define	kParticleTextureHeight			64
+#define	kParticleTextureWidth			64
+
 // MACROS
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
@@ -172,7 +175,27 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition); 			
 	glShadeModel(GL_SMOOTH);
 	glEnable(GL_DEPTH_TEST);
-		
+
+    // Configure a texture to use for the point sprites
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_SRC_COLOR);
+    glGenTextures(sizeof(textures)/sizeof(textures[0]), textures);
+    glBindTexture(GL_TEXTURE_2D, textures[0]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"particle" ofType:@"pvr4"];
+    NSData *texData = [[NSData alloc] initWithContentsOfFile:path];
+    glCompressedTexImage2D(GL_TEXTURE_2D, 0, GL_COMPRESSED_RGB_PVRTC_4BPPV1_IMG,
+			   kParticleTextureWidth, kParticleTextureHeight, 0,
+			   (kParticleTextureWidth * kParticleTextureHeight) / 2,
+			   [texData bytes]);
+
+    // Enable point sprites
+    glEnable(GL_POINT_SPRITE_OES);
+    glTexEnvf(GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE);
+    glPointSize(10);
+
 	//Configure OpenGL arrays
 	glEnableClientState(GL_VERTEX_ARRAY);
 
@@ -185,8 +208,6 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	
 	//Make the OpenGL modelview matrix the default
 	glMatrixMode(GL_MODELVIEW);
-
-    fountain.setupView();
 }
 
 // Updates the OpenGL view

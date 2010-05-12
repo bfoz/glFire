@@ -82,6 +82,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	
 	UIAccelerationValue	*accel;
 
+    GLuint  textures[1];
     ParticleFountain	fountain;
 }
 
