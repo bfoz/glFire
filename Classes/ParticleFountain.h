@@ -8,9 +8,12 @@
 
 #include "Vector.h"
 typedef Vector<GLfloat, 3>	Vector3f;
+typedef	Vector<GLfloat, 4>	RGBAf;
 
 struct Particle
 {
+    RGBAf	_color;
+    RGBAf	_colorRate;
     Vector3f	_position;
     Vector3f	_velocity;
     float	_timeToLive;
@@ -18,6 +21,7 @@ struct Particle
     void update(float interval, Vector3f& acceleration)
     {
 	_timeToLive -= interval;
+	_color += _colorRate*interval;
 	_position += _velocity*interval;
 	_velocity += acceleration*interval;
     }
@@ -37,6 +41,11 @@ class ParticleFountain
     float	_remainder;		// Fractional particles to create
     float	_speed;			// Characteristic velocity of the particle stream
 
+    RGBAf	_color;			// Initial particle color
+    RGBAf	_colorRate;		// Rate of change of particle color
+
+    RGBAf	_colorVariance;
+    RGBAf	_colorRateVariance;
     float	_directionVariance;
     float	_lifespanVariance;
     float	_speedVariance;
@@ -48,6 +57,7 @@ class ParticleFountain
     struct _particle_vertices
     {
 	Vector3f	position;
+	RGBAf		color;
     };
 
     std::vector<struct _particle_vertices>   _buffer;
@@ -71,6 +81,8 @@ public:
     void update(float interval);
     
     void acceleration(Vector3f a)   { _acceleration = a;    }
+    void color(RGBAf c)		{ _color = c;	}
+    void colorRate(RGBAf r)	{ _colorRate = r;   }
     void diameter(float d)	{ _diameter = d;    }
     void direction(Vector3f d)	{ _direction = d.unit();    }
     void lifespan(float life)	{ _lifespan = life; }
@@ -78,8 +90,10 @@ public:
     void rate(unsigned r)	{ _rate = r;	}
     void speed(float s)		{ _speed = s;	}
 
-    void variance(float dir, float life=0, float _speed=0)
+    void variance(RGBAf c, RGBAf cRV, float dir, float life=0, float _speed=0)
     {
+	_colorVariance = c;
+	_colorRateVariance = cRV;
 	_directionVariance = dir;
 	_lifespanVariance = life;
 	_speedVariance = _speed;

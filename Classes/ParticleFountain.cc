@@ -5,6 +5,9 @@
 // Macro which returns a random value between -1 and 1
 #define RANDOM_MINUS_1_TO_1() ((random() / (GLfloat)0x3fffffff )-1.0f)
 
+// Mcro which returns a random number between 0 and 1
+#define RANDOM_0_TO_1() ((random() / (GLfloat)0x7fffffff ))
+
 void ParticleFountain::draw()
 {
     // Preallocate a vertex buffer
@@ -15,9 +18,11 @@ void ParticleFountain::draw()
     {
 	// Copy all active particles into the vertex buffer
 	_buffer[j].position = (*i)->_position;
+	_buffer[j].color = (*i)->_color;
     }
 
     glVertexPointer(3, GL_FLOAT, sizeof(_particle_vertices), &(_buffer.front().position));
+    glColorPointer(4, GL_FLOAT, sizeof(_particle_vertices), &(_buffer.front().color));
     glDrawArrays(GL_POINTS, 0, _particles.size());
     
 }
@@ -67,12 +72,15 @@ void ParticleFountain::update(float interval)
 	    --num;
 
 	    // Create a random vector
+	    RGBAf c(RANDOM_0_TO_1(), RANDOM_0_TO_1(), RANDOM_0_TO_1(), RANDOM_0_TO_1());
 	    Vector3f r(RANDOM_MINUS_1_TO_1(), RANDOM_MINUS_1_TO_1(), RANDOM_MINUS_1_TO_1());
 
 	    // Initialize the new particle
+	    p->_color = _color + (c * _colorVariance);
+	    p->_colorRate = _colorRate + (c * _colorRateVariance);
 	    p->_position = _position + (r * _diameter);
 	    p->_velocity = (_direction + (r * _directionVariance)).unit() * (_speed + _speedVariance);
-	    p->_timeToLive = _lifespan + ((r.x() + 1) * _lifespanVariance / 2);
+	    p->_timeToLive = _lifespan + (RANDOM_0_TO_1() * _lifespanVariance);
 	}
     }
 }

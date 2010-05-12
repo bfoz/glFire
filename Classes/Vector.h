@@ -86,4 +86,54 @@ public:
     }
 };
 
+template<class T>
+class Vector<T, 4>
+{
+    T v[4];
+
+public:
+    explicit Vector(T value=0)
+    {
+	v[0] = v[1] = v[2] = v[3] = value;
+    }
+    Vector(T a, T b, T c=0, T d=0)
+    {
+	v[0] = a;
+	v[1] = b;
+	v[2] = c;
+	v[3] = d;
+    }
+
+    Vector<T,4>& operator+=(const Vector<T,4>& right)
+    {
+	v[0] += right.v[0];
+	v[1] += right.v[1];
+	v[2] += right.v[2];
+	v[3] += right.v[3];
+	return *this;
+    }
+
+    Vector<T,4> operator+(const Vector<T,4>& right)
+    {
+	return Vector<T,4>(v[0]+right.v[0], v[1]+right.v[1], v[2]+right.v[2], v[3]+right.v[3]);
+    }
+    Vector<T,4> operator-(const Vector<T,4>& right)
+    {
+	return Vector<T,4>(v[0]-right.v[0], v[1]-right.v[1], v[2]-right.v[2], v[3]-right.v[3]);
+    }
+
+    Vector<T,4> operator*(T right) const
+    {
+	return Vector<T,4>(v[0]*right, v[1]*right, v[2]*right, v[3]*right);
+    }
+    Vector<T,4> operator*(const Vector<T,4>& right)
+    {
+	return Vector<T,4>(v[0]*right.v[0], v[1]*right.v[1], v[2]*right.v[2], v[3]*right.v[3]);
+    }
+    Vector<T,4> operator/(T right) const
+    {
+	return Vector<T,4>(v[0]/right, v[1]/right, v[2]/right, v[3]/right);
+    }
+};
+
 #endif	// VECTOR_H

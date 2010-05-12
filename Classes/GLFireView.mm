@@ -58,6 +58,11 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 // CONSTANTS
 #define kTeapotScale				3.0
 #define	kAccelerationMagnitude			-0.15
+#define	kFountainColor				RGBAf(1.0, 0.4, 0.2, 1.0)
+#define	kFountainColorFinal			RGBAf(0.0, 0.0, 0.0, 1.0)
+#define	kFountainColorVariance			RGBAf(0.0, 0.1, 0.1, 0.0)
+#define	kFountainColorRate			((kFountainColorFinal - kFountainColor)/kParticleLifespan)
+#define	kFountainColorRateVariance		RGBAf(0.1)
 #define	kFountainDiameter			0.01
 #define	kFountainDirectionVariance		0.2
 #define	kFountainRate				100
@@ -135,12 +140,16 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
 	fountain.position(Vector3f(0,0,0));
 	fountain.acceleration(kAccelerationDirection);
+	fountain.color(kFountainColor);
+	fountain.colorRate(kFountainColorRate);
 	fountain.diameter(kFountainDiameter);
 	fountain.direction(kFountainDirection);
 	fountain.lifespan(kParticleLifespan);
 	fountain.rate(kFountainRate);
 	fountain.speed(kParticleSpeed);
-	fountain.variance(kFountainDirectionVariance, kParticleLifespanVariance, kParticleSpeedVariance);
+	fountain.variance(kFountainColorVariance, kFountainColorRateVariance,
+			  kFountainDirectionVariance, kParticleLifespanVariance,
+			  kParticleSpeedVariance);
 	fountain.start();
 
 		[self setupView];
@@ -198,6 +207,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
 	//Configure OpenGL arrays
 	glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
 
 	//Set the OpenGL projection matrix
 	glMatrixMode(GL_PROJECTION);
