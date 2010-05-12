@@ -56,22 +56,21 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 #include "ParticleFountain.h"
 
 // CONSTANTS
-#define kTeapotScale				3.0
 #define	kAccelerationMagnitude			0.1
 #define	kFountainColor				RGBAf(1.0, 0.4, 0.2, 1.0)
 #define	kFountainColorFinal			RGBAf(0.0, 0.0, 0.0, 1.0)
 #define	kFountainColorVariance			RGBAf(0.0, 0.1, 0.1, 0.0)
 #define	kFountainColorRate			((kFountainColorFinal - kFountainColor - kFountainColorVariance)/kParticleLifespan)
 #define	kFountainColorRateVariance		RGBAf(0.0)
-#define	kFountainDiameter			0.01
+#define	kFountainDiameter			0.02
 #define	kFountainDirectionVariance		1
-#define	kFountainRate				250
+#define	kFountainRate				200
 #define	kFountainRateVariance			25
-#define	kParticleLifespan			1.5
-#define	kParticleLifespanVariance		0.2
-#define	kParticleSize				10
-#define	kParticleSpeed				0.02
-#define	kParticleSpeedVariance			0.001
+#define	kParticleLifespan			1.9
+#define	kParticleLifespanVariance		0.3
+#define	kParticleSize				20
+#define	kParticleSpeed				0.01
+#define	kParticleSpeedVariance			0.005
 #if TARGET_IPHONE_SIMULATOR
 #define	kAccelerationDirection			Vector3f(0,0,kAccelerationMagnitude)
 #define	kFountainDirection			Vector3f(0,0,1)
@@ -222,9 +221,8 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 		
 	//Setup model view matrix
 	glLoadIdentity();
-	glTranslatef(0.0, -0.1, -1.0);
-	glScalef(kTeapotScale, kTeapotScale, kTeapotScale);
-		
+	glTranslatef(0.0, 0, -0.2);
+
 	if(length >= 0.1)
 	{
 		//Clear matrix to be used to rotate from the current referential to one based on the gravity vector
