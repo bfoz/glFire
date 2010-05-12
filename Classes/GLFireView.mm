@@ -183,13 +183,14 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition); 			
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_DEPTH_TEST);
+
+    glShadeModel(GL_FLAT);
+    glDisable(GL_DEPTH_TEST);
 
     // Configure a texture to use for the point sprites
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_SRC_COLOR);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     glGenTextures(sizeof(textures)/sizeof(textures[0]), textures);
     glBindTexture(GL_TEXTURE_2D, textures[0]);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
